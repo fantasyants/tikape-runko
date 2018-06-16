@@ -24,7 +24,7 @@ public class Main {
         
         database.init();
 
-        Spark.get("/index", (req, res) -> {
+        Spark.get("/", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("drinkit", reseptit.findAll());
 
