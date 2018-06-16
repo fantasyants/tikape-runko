@@ -1,0 +1,64 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+
+        <title>Drinkit</title>
+        <meta charset="utf-8" />
+
+    </head>
+    <body>
+
+        <h2>Drinkit</h2>
+
+        <ul>
+            <li th:each="drinkki : ${drinkit}">
+                <span th:text="${drinkki.nimi}">Drinkki</span>
+                <form method="POST" th:action="@{~/drinkit/{drinkkiId}/delete(drinkkiId=${drinkki.id})}">
+                    <input type="submit" value="Poista"/>
+                </form>
+            </li>   
+        </ul>
+
+
+        <h4>Lisää uusi drinkki</h4>
+
+        <form method="POST" action="/drinkit">
+            Drinkin nimi:<br/>
+            <input type="text" name="nimi"/><br/>
+            <input type="submit" value="Lisää"/>
+        </form>
+
+        <h4>Lisää raaka-aineita</h4>
+
+        <form method="POST" action="/drinkit/lisaa">
+            Drinkin nimi:<br/>
+            <select name="drinkinNimi">
+                <option th:each="drinkki : ${drinkit}" th:value="${drinkki.id}" th:text="${drinkki.nimi}">
+                    Drinkki
+                </option>
+            </select>
+            <br/>
+            Lisättävä raaka-aine<br/>
+            <select name="raakaAineenNimi">
+                <option th:each="raakaAine : ${raakaAineet}" th:value="${raakaAine.nimi}" th:text="${raakaAine.nimi}">
+                    RaakaAine
+                </option>
+            </select>
+            <br/>Järjestys<br/>
+            <input type="text" name="jarjestys"/>
+            <br/>Määrä<br/>
+            <input type="text" name="maara"/>
+            <br/>Ohje<br/>
+            <input type="text" name="ohje"/>
+            <br/>
+            <input type="submit" value="Lisää"/>
+        </form>
+
+        <ul>
+            <li>
+                <a href="index">Etusivulle</a>
+            </li>
+        </ul>
+    </body>
+</html>
+

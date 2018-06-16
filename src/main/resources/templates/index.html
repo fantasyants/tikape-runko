@@ -1,16 +1,36 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
     <head>
-        <title>Otsikko</title>
-        <meta charset="utf-8" />
+
+        <title>Etusivu</title>
+        <meta charset="utf-8" /> 
+
     </head>
 
     <body>
-        <h1>Heippa vaan!</h1>
+        <h2>Drinkkilistaus</h2>
 
-        <p>Ja .. <span th:text="${viesti}">jotain?</span></p>
+        <ul>
+            <li th:each="drinkki : ${drinkit}">
+                <a th:href="@{~/drinkki/{id}(id=${drinkki.id})}">
+                    <span th:text="${drinkki.nimi}">Drinkki</span>
+                </a>
+            </li>   
+        </ul>
 
-        <p><a href="/opiskelijat">Tästä opiskelijalistaukseen.</a></p>
+        <ul>
+
+            <li>
+                <a href="drinkit">Luo uusi drinkki ja lisää drinkkeihin raaka-aineita</a>
+            </li>
+            <li>
+                <a href="ainekset">Tarkastele ja lisää raaka-aineita</a>
+            </li>
+            <li>
+                <a href="tilasto"> Tarkastele tilastoja</a>
+            </li>
+            
+
+        </ul>
     </body>
 </html>

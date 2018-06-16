@@ -1,0 +1,27 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Tilastot</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        
+        <h2>Tilastot</h2>
+
+        <h4>Raaka-aineen nimi ja niiden reseptien lukumäärä, joissa raaka-aine esiintyy</h4>
+        <ul>
+            <li th:each="tilasto : ${tilasto}">
+                <span th:text="${tilasto.nimi}">Raaka-aine</span>
+                <span th:text="${tilasto.lkm}">Määrä</span>
+            </li>   
+        </ul>
+        <ul>
+            <li>
+                <a href="index">Etusivulle</a>
+            </li>
+        </ul>
+
+    </body>
+</html>
+

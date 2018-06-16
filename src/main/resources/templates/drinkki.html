@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Resepti</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h1 th:text="${resepti.nimi}">Reseptin nimi</h1>
+
+
+        <h2>Raaka-aineet ja ohje</h2>
+
+
+        <ol>
+            <li th:each="raakaAineResepti : ${raakaAineResepti}">
+                <span th:text="${raakaAineResepti.maara}">Määrä</span>
+                <span th:text="${raakaAineResepti.raakaAineNimi}">Raaka-aine</span><p>Ohje:</p>
+                
+                <span th:text="${raakaAineResepti.ohje}">Ohje</span> <p> </p>
+
+
+            </li>   
+        </ol>
+        
+        <ul>
+            <li>
+                <a th:href="@{~/index}">Etusivulle</a>
+            </li>
+        </ul>
+
+    </body>
+</html>
