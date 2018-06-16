@@ -31,7 +31,7 @@
         <h4>Lisää raaka-aineita</h4>
 
         <form method="POST" action="/drinkit/lisaa">
-            Drinkin nimi:<br/>
+            Drinkki, johon raaka-aineita halutaan lisätä:<br/>
             <select name="drinkinNimi">
                 <option th:each="drinkki : ${drinkit}" th:value="${drinkki.id}" th:text="${drinkki.nimi}">
                     Drinkki
@@ -46,9 +46,9 @@
             </select>
             <br/>Järjestys<br/>
             <input type="text" name="jarjestys"/>
-            <br/>Määrä<br/>
+            <br/>Raaka-aineen määrä<br/>
             <input type="text" name="maara"/>
-            <br/>Ohje<br/>
+            <br/>Raaka-ainekohtainen ohje (max. 500 merkkiä)<br/>
             <input type="text" name="ohje"/>
             <br/>
             <input type="submit" value="Lisää"/>

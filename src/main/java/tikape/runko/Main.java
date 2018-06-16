@@ -1,6 +1,5 @@
 package tikape.runko;
 
-
 import java.util.ArrayList;
 import spark.Spark;
 import java.util.HashMap;
@@ -21,7 +20,7 @@ public class Main {
         RaakaAineDao raakaAineet = new RaakaAineDao(database);
         RaakaAineReseptiDao raakaAineReseptit = new RaakaAineReseptiDao(database);
         TilastoDao tilastot = new TilastoDao(database);
-        
+
         database.init();
 
         Spark.get("/", (req, res) -> {
@@ -101,9 +100,12 @@ public class Main {
             Integer jarjestys = Integer.parseInt(req.queryParams("jarjestys"));
             String maara = req.queryParams("maara");
             String ohje = req.queryParams("ohje");
-
-            RaakaAineResepti rar = new RaakaAineResepti(-1, reseptiId, raakaAineNimi, jarjestys, maara, ohje);
-            raakaAineReseptit.save(rar);
+            if (raakaAineNimi.isEmpty() || reseptiId == null || maara.length() > 50 || ohje.length() > 500) {
+                res.redirect("/virhe");
+            } else {
+                RaakaAineResepti rar = new RaakaAineResepti(-1, reseptiId, raakaAineNimi, jarjestys, maara, ohje);
+                raakaAineReseptit.save(rar);
+            }
 
             res.redirect("/drinkit");
             return "";
