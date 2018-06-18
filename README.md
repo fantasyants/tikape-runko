@@ -1,4 +1,4 @@
 # tikape-runko
 
-Tietokantojen perusteet -kurssilla tehtävän web-sovelluksen pohja.
+ Sisältää drinkkilistauksen ja raaka-ainelistauksen, joihin voi lisätä omia reseptejään ja raaka-aineitaan, sekä mahdollisuuden  tarkastella reseptejä.
 
